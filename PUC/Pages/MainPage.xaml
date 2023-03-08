@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PUC.Pages.MainPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <Label Text="STEP 0: SET DRIVE NAME" FontAttributes="Bold" FontSize="Medium"/>
+                <Entry Text="{Binding DriveName}" VerticalOptions="Start" HorizontalOptions="FillAndExpand"></Entry>
+            </StackLayout>
+            <StackLayout Grid.Row="1">
+                <Label Text="STEP 1: CREATE FOLDER" FontAttributes="Bold" FontSize="Medium"/>
+                <Label Text="Enter Folder To Create"/>
+                <Entry Text="{Binding FolderName}" VerticalOptions="Start" HorizontalOptions="FillAndExpand"></Entry>
+                <Button Text="CreateFolder"  Command="{Binding CreateFolderCommand}" VerticalOptions="Start"/>
+            </StackLayout>
+            <StackLayout Grid.Row="2">
+                <Label Text="STEP 2: SELECT FOLDER" FontAttributes="Bold" FontSize="Medium"/>
+                <Button Text="SelectFolder" Command="{Binding SelectFolderCommand}" VerticalOptions="Start"/>
+                <Label Text="{Binding SelectedFolder, Mode=TwoWay}" FontSize="17" TextColor="Black"  VerticalOptions="Start"></Label>
+            </StackLayout>
+            <StackLayout Grid.Row="3">
+                <Label Text="STEP 3: UPLOAD FILES TO SELECTED FOLDER" FontAttributes="Bold" FontSize="Medium"/>
+                <Label  Text="Upload files to selected folder"/>
+                <Button Text="UploadFiles" Command="{Binding UploadFileToSelectedFolderCommand}" VerticalOptions="Start"/>
+            </StackLayout>
+            <StackLayout Grid.Row="4">
+                <Label Text="STEP 4: LIST FILES FROM SELECTED FOLDER" FontAttributes="Bold" FontSize="Medium"/>
+                <Button Text="ListFiles"  Command="{Binding PickedFilesCommand }" VerticalOptions="Start"/>
+                <ListView ItemsSource="{Binding Files}" SelectedItem="{Binding SelectedFile}" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
