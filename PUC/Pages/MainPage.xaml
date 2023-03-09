@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PUC.Pages.MainPage">
     <ContentPage.Content>
+        <ScrollView>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -15,27 +17,47 @@
                 <Label Text="STEP 0: SET DRIVE NAME" FontAttributes="Bold" FontSize="Medium"/>
                 <Entry Text="{Binding DriveName}" VerticalOptions="Start" HorizontalOptions="FillAndExpand"></Entry>
             </StackLayout>
-            <StackLayout Grid.Row="1">
+           <StackLayout Grid.Row="1">
                 <Label Text="STEP 1: CREATE FOLDER" FontAttributes="Bold" FontSize="Medium"/>
                 <Label Text="Enter Folder To Create"/>
                 <Entry Text="{Binding FolderName}" VerticalOptions="Start" HorizontalOptions="FillAndExpand"></Entry>
+                <Label Grid.Row="2" Text="STEP 2: CREATE SUBFOLDER" FontAttributes="Bold" FontSize="Medium"/>
+                <Label Grid.Row="2" Text="DO YOU WANT TO CREATE SUB FOLDER" FontAttributes="Bold" FontSize="Small" />
+                <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                     <Label  Grid.Row="1"  Grid.Column="0"  Text= "SubFolder1"  FontSize="Small"  FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                     <Entry  Grid.Column="0"  Text= "{Binding SubFolder1}" VerticalOptions="Start" HorizontalOptions="FillAndExpand"></Entry>
+                     <Label  Grid.Row="1" Grid.Column="1"  Text= "SubFolder2"  FontSize="Small" FontAttributes="Bold" HorizontalOptions="Center" ></Label>
+                     <Entry  Grid.Column="1"  Text= "{Binding SubFolder2}" VerticalOptions="Start" HorizontalOptions="FillAndExpand"></Entry>
+                     <Label  Grid.Row="1"  Grid.Column="2"  Text= "SubFolder3"  FontSize="Small" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                     <Entry  Grid.Column="2"  Text= "{Binding SubFolder3}" VerticalOptions="Start" HorizontalOptions="FillAndExpand"></Entry>
+                </Grid>
                 <Button Text="CreateFolder"  Command="{Binding CreateFolderCommand}" VerticalOptions="Start"/>
             </StackLayout>
-            <StackLayout Grid.Row="2">
-                <Label Text="STEP 2: SELECT FOLDER" FontAttributes="Bold" FontSize="Medium"/>
+            <StackLayout Grid.Row="3">
+                <Label Text="STEP 3: SELECT FOLDER" FontAttributes="Bold" FontSize="Medium"/>
                 <Button Text="SelectFolder" Command="{Binding SelectFolderCommand}" VerticalOptions="Start"/>
                 <Label Text="{Binding SelectedFolder, Mode=TwoWay}" FontSize="17" TextColor="Black"  VerticalOptions="Start"></Label>
             </StackLayout>
-            <StackLayout Grid.Row="3">
-                <Label Text="STEP 3: UPLOAD FILES TO SELECTED FOLDER" FontAttributes="Bold" FontSize="Medium"/>
+            <StackLayout Grid.Row="4">
+                <Label Text="STEP 4: UPLOAD FILES TO SELECTED FOLDER" FontAttributes="Bold" FontSize="Medium"/>
                 <Label  Text="Upload files to selected folder"/>
                 <Button Text="UploadFiles" Command="{Binding UploadFileToSelectedFolderCommand}" VerticalOptions="Start"/>
             </StackLayout>
-            <StackLayout Grid.Row="4">
-                <Label Text="STEP 4: LIST FILES FROM SELECTED FOLDER" FontAttributes="Bold" FontSize="Medium"/>
+            <StackLayout Grid.Row="5">
+                <Label Text="STEP 5: LIST FILES FROM SELECTED FOLDER" FontAttributes="Bold" FontSize="Medium"/>
                 <Button Text="ListFiles"  Command="{Binding PickedFilesCommand }" VerticalOptions="Start"/>
                 <ListView ItemsSource="{Binding Files}" SelectedItem="{Binding SelectedFile}" />
             </StackLayout>
         </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
